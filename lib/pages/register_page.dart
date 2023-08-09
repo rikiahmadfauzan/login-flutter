@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modernlogintute/components/my_button.dart';
@@ -153,6 +151,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintText: 'Confirm Password',
                   obscureText: true,
                 ),
+
 
                 const SizedBox(height: 25),
 
