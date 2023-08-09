@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:modernlogintute/components/my_button.dart';
-import 'package:modernlogintute/components/my_textfield.dart';
-import 'package:modernlogintute/components/square_tile.dart';
+import 'package:login_iki/components/my_button.dart';
+import 'package:login_iki/components/my_textfield.dart';
+import 'package:login_iki/components/square_tile.dart';
+import 'package:login_iki/pages/register_page.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -40,49 +41,21 @@ class _LoginPageState extends State<LoginPage> {
     } on FirebaseAuthException catch (e) {
       // pop the loading circle
       Navigator.pop(context);
-      // WRONG EMAIL
-      if (e.code == 'user-not-found') {
-        // show error to user
-        wrongEmailMessage();
-      }
-
-      // WRONG PASSWORD
-      else if (e.code == 'wrong-password') {
-        // show error to user
-        wrongPasswordMessage();
-      }
+      showErrorMassage(e.code);
     }
   }
 
-  // wrong email message popup
-  void wrongEmailMessage() {
+  //erorr
+  void showErrorMassage(String message) {
     showDialog(
       context: context,
       builder: (context) {
-        return const AlertDialog(
+        return AlertDialog(
           backgroundColor: Colors.black,
           title: Center(
             child: Text(
-              'Incorrect Email',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  // wrong password message popup
-  void wrongPasswordMessage() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const AlertDialog(
-          backgroundColor: Colors.black,
-          title: Center(
-            child: Text(
-              'Incorrect Password',
-              style: TextStyle(color: Colors.white),
+              message,
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         );
@@ -191,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
 
-                const SizedBox(height: 50),
+                const SizedBox(height: 100),
 
                 // google + apple sign in buttons
                 Row(
@@ -200,14 +173,18 @@ class _LoginPageState extends State<LoginPage> {
                     // google button
                     SquareTile(imagePath: 'lib/images/google.png'),
 
-                    SizedBox(width: 25),
+                    SizedBox(width: 15),
 
                     // apple button
                     SquareTile(imagePath: 'lib/images/facebook.png'),
 
-                    SizedBox(width: 25),
+                    SizedBox(width: 15),
 
-                    SquareTile(imagePath: 'lib/images/telpon.png')
+                    SquareTile(imagePath: 'lib/images/tweeter.png'),
+
+                    SizedBox(width: 15),
+
+                    SquareTile(imagePath: 'lib/images/github.png')
                   ],
                 ),
 

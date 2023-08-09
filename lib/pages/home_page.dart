@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: (Colors.black),
         actions: [
           IconButton(
             onPressed: signUserOut,
@@ -23,7 +24,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
           child: Text(
-        "LOGGED IN AS: ${user.email!}",
+        "Selamat Datang ${user.email!}",
         style: TextStyle(fontSize: 20),
       )),
     );
